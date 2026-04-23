@@ -10,6 +10,7 @@ import {
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import { store } from '@/routes/two-factor/login/index';
 import { Form, Head } from '@inertiajs/vue3';
+import { ArrowRight, Key, ShieldCheck } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
 
 interface AuthConfigContent {
@@ -55,48 +56,59 @@ const codeValue = computed<string>(() => code.value.join(''));
     >
         <Head title="Autenticação de Dois Fatores" />
 
-        <div class="space-y-6">
+        <div class="grid gap-6">
+            <!-- TOTP Code Input -->
             <template v-if="!showRecoveryInput">
                 <Form
                     v-bind="store.form()"
-                    class="space-y-4"
+                    class="grid gap-6"
                     reset-on-error
                     @error="code = []"
                     #default="{ errors, processing, clearErrors }"
                 >
-                    <input type="hidden" name="code" :value="codeValue" />
-                    <div
-                        class="flex flex-col items-center justify-center space-y-3 text-center"
-                    >
-                        <div class="flex w-full items-center justify-center">
-                            <PinInput
-                                id="otp"
-                                placeholder="○"
-                                v-model="code"
-                                type="number"
-                                otp
-                            >
-                                <PinInputGroup>
-                                    <PinInputSlot
-                                        v-for="(id, index) in 6"
-                                        :key="id"
-                                        :index="index"
-                                        :disabled="processing"
-                                        autofocus
-                                    />
-                                </PinInputGroup>
-                            </PinInput>
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="p-3 rounded-full bg-primary/10">
+                            <ShieldCheck class="w-8 h-8 text-primary" />
                         </div>
+                        <input type="hidden" name="code" :value="codeValue" />
+                        <PinInput
+                            id="otp"
+                            placeholder="○"
+                            v-model="code"
+                            type="number"
+                            otp
+                        >
+                            <PinInputGroup>
+                                <PinInputSlot
+                                    v-for="(id, index) in 6"
+                                    :key="id"
+                                    :index="index"
+                                    :disabled="processing"
+                                    autofocus
+                                />
+                            </PinInputGroup>
+                        </PinInput>
                         <InputError :message="errors.code" />
                     </div>
-                    <Button type="submit" class="w-full" :disabled="processing"
-                        >Continuar</Button
+
+                    <Button
+                        type="submit"
+                        class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                        :disabled="processing"
                     >
+                        <template v-if="!processing">
+                            Verificar e Entrar
+                            <ArrowRight
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                            />
+                        </template>
+                    </Button>
+
                     <div class="text-center text-sm text-muted-foreground">
                         <span>ou você pode </span>
                         <button
                             type="button"
-                            class="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
+                            class="text-primary font-bold hover:underline transition-colors"
                             @click="() => toggleRecoveryMode(clearErrors)"
                         >
                             {{ authConfigContent.toggleText }}
@@ -105,30 +117,53 @@ const codeValue = computed<string>(() => code.value.join(''));
                 </Form>
             </template>
 
+            <!-- Recovery Code Input -->
             <template v-else>
                 <Form
                     v-bind="store.form()"
-                    class="space-y-4"
+                    class="grid gap-6"
                     reset-on-error
                     #default="{ errors, processing, clearErrors }"
                 >
-                    <Input
-                        name="recovery_code"
-                        type="text"
-                        placeholder="Digite o código de recuperação"
-                        :autofocus="showRecoveryInput"
-                        required
-                    />
-                    <InputError :message="errors.recovery_code" />
-                    <Button type="submit" class="w-full" :disabled="processing"
-                        >Continuar</Button
+                    <div class="grid gap-2">
+                        <div class="relative group">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"
+                            >
+                                <Key
+                                    class="w-4 h-4 text-muted-foreground/50 group-focus-within:text-primary transition-colors"
+                                />
+                            </div>
+                            <Input
+                                name="recovery_code"
+                                type="text"
+                                placeholder="Digite o código de recuperação"
+                                :autofocus="showRecoveryInput"
+                                required
+                                class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                            />
+                        </div>
+                        <InputError :message="errors.recovery_code" />
+                    </div>
+
+                    <Button
+                        type="submit"
+                        class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                        :disabled="processing"
                     >
+                        <template v-if="!processing">
+                            Verificar e Entrar
+                            <ArrowRight
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                            />
+                        </template>
+                    </Button>
 
                     <div class="text-center text-sm text-muted-foreground">
                         <span>ou você pode </span>
                         <button
                             type="button"
-                            class="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
+                            class="text-primary font-bold hover:underline transition-colors"
                             @click="() => toggleRecoveryMode(clearErrors)"
                         >
                             {{ authConfigContent.toggleText }}

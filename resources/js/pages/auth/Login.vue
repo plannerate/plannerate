@@ -11,10 +11,9 @@ import { store } from '@/routes/login/index';
 import { request } from '@/routes/password/index';
 import SocialLoginButtons from '~/components/SocialLoginButtons.vue';
 import { Form, Head, usePage } from '@inertiajs/vue3';
+import { ArrowRight, Key, Lock, Mail } from 'lucide-vue-next';
 
 const page = usePage<{ socialProviders?: { provider: string; label: string; url: string; icon: string }[] }>();
-
-console.log('Login page props:', page.props);
 
 defineProps<{
     status?: string;
@@ -25,14 +24,14 @@ defineProps<{
 
 <template>
     <AuthBase
-        title="Acesse sua conta"
-        description="Digite seu email e senha abaixo para entrar"
+        title="Acesso ao Sistema"
+        description="Digite seu e-mail e senha para entrar"
     >
         <Head title="Entrar" />
 
         <div
             v-if="status"
-            class="mb-4 text-center text-sm font-medium text-green-600 dark:text-green-400"
+            class="mb-6 text-center text-sm font-medium text-green-600 dark:text-green-400"
         >
             {{ status }}
         </div>
@@ -44,70 +43,134 @@ defineProps<{
             class="flex flex-col gap-6"
         >
             <div class="grid gap-6">
+                <!-- Email -->
                 <div class="grid gap-2">
-                    <Label for="email">Endereço de email</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        name="email"
-                        required
-                        autofocus
-                        :tabindex="1"
-                        autocomplete="email"
-                        placeholder="email@example.com"
-                    />
+                    <Label
+                        for="email"
+                        class="text-xs font-bold uppercase tracking-widest text-muted-foreground"
+                    >
+                        E-mail Corporativo
+                    </Label>
+                    <div class="relative group">
+                        <div
+                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"
+                        >
+                            <Mail
+                                class="w-4 h-4 text-muted-foreground/50 group-focus-within:text-primary transition-colors"
+                            />
+                        </div>
+                        <Input
+                            id="email"
+                            type="email"
+                            name="email"
+                            required
+                            autofocus
+                            :tabindex="1"
+                            autocomplete="email"
+                            placeholder="nome@organizacao.com"
+                            class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                        />
+                    </div>
                     <InputError :message="errors.email" />
                 </div>
 
+                <!-- Password -->
                 <div class="grid gap-2">
                     <div class="flex items-center justify-between">
-                        <Label for="password">Senha</Label>
+                        <Label
+                            for="password"
+                            class="text-xs font-bold uppercase tracking-widest text-muted-foreground"
+                        >
+                            Senha
+                        </Label>
                         <TextLink
                             v-if="canResetPassword"
                             :href="request()"
-                            class="text-sm"
+                            class="text-xs font-bold text-primary hover:text-primary/80 transition-colors"
                             :tabindex="5"
                         >
                             Esqueceu a senha?
                         </TextLink>
                     </div>
-                    <Input
-                        id="password"
-                        type="password"
-                        name="password"
-                        required
-                        :tabindex="2"
-                        autocomplete="current-password"
-                        placeholder="Senha"
-                    />
+                    <div class="relative group">
+                        <div
+                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"
+                        >
+                            <Lock
+                                class="w-4 h-4 text-muted-foreground/50 group-focus-within:text-primary transition-colors"
+                            />
+                        </div>
+                        <Input
+                            id="password"
+                            type="password"
+                            name="password"
+                            required
+                            :tabindex="2"
+                            autocomplete="current-password"
+                            placeholder="••••••••"
+                            class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                        />
+                    </div>
                     <InputError :message="errors.password" />
                 </div>
 
-                <div class="flex items-center justify-between">
-                    <Label for="remember" class="flex items-center space-x-3">
-                        <Checkbox id="remember" name="remember" :tabindex="3" />
-                        <span>Lembrar-me</span>
+                <!-- Remember me -->
+                <div class="flex items-center gap-3 py-1">
+                    <Checkbox id="remember" name="remember" :tabindex="3" />
+                    <Label
+                        for="remember"
+                        class="text-sm text-muted-foreground font-medium select-none cursor-pointer"
+                    >
+                        Manter sessão ativa por 24 horas
                     </Label>
                 </div>
 
+                <!-- Submit -->
                 <Button
                     type="submit"
-                    class="mt-4 w-full btn-gradient"
+                    class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
                     :tabindex="4"
                     :disabled="processing"
                     data-test="login-button"
                 >
                     <Spinner v-if="processing" class="h-4 w-4 animate-spin" />
-                    Entrar
+                    <template v-else>
+                        Entrar no Sistema
+                        <ArrowRight
+                            class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                        />
+                    </template>
                 </Button>
             </div>
-
-            <!-- <div class="text-center text-sm text-muted-foreground">
-                Não tem uma conta?
-                <TextLink :href="route('register')" :tabindex="5">Cadastre-se</TextLink>
-            </div> -->
         </Form>
 
-        <SocialLoginButtons :providers="page.props.socialProviders ?? []" />
+        <!-- Identity Providers -->
+        <template v-if="(page.props.socialProviders ?? []).length > 0">
+            <div class="mt-10">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <span class="w-full border-t border-border" />
+                    </div>
+                    <div class="relative flex justify-center text-xs uppercase tracking-widest font-bold">
+                        <span class="bg-background px-4 text-muted-foreground">
+                            Provedores de Identidade
+                        </span>
+                    </div>
+                </div>
+                <div class="mt-6 flex flex-col gap-3">
+                    <SocialLoginButtons :providers="page.props.socialProviders ?? []" />
+                </div>
+            </div>
+        </template>
+
+        <!-- Contact admin note -->
+        <div class="mt-10 pt-8 border-t border-border text-center">
+            <p class="text-muted-foreground text-sm font-medium">
+                Novo na plataforma?
+                <a href="#" class="text-primary font-bold hover:underline">
+                    Entre em contato com a Administração
+                </a>
+            </p>
+        </div>
     </AuthBase>
 </template>

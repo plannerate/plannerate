@@ -9,6 +9,7 @@ import AuthLayout from '@/layouts/AuthLayout.vue';
 import { login } from '@/routes';
 import { email } from '@/routes/password/index';
 import { Form, Head } from '@inertiajs/vue3';
+import { ArrowRight, Mail } from 'lucide-vue-next';
 
 defineProps<{
     status?: string;
@@ -24,45 +25,62 @@ defineProps<{
 
         <div
             v-if="status"
-            class="mb-4 text-center text-sm font-medium text-green-600 dark:text-green-400"
+            class="mb-6 text-center text-sm font-medium text-green-600 dark:text-green-400"
         >
             {{ status }}
         </div>
 
         <div class="space-y-6">
             <Form v-bind="email.form()" v-slot="{ errors, processing }">
-                <div class="grid gap-2">
-                    <Label for="email">Endereço de e-mail</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        name="email"
-                        autocomplete="off"
-                        autofocus
-                        placeholder="email@example.com"
-                    />
-                    <InputError :message="errors.email" />
-                </div>
+                <div class="grid gap-6">
+                    <div class="grid gap-2">
+                        <Label
+                            for="email"
+                            class="text-xs font-bold uppercase tracking-widest text-muted-foreground"
+                        >
+                            Endereço de e-mail
+                        </Label>
+                        <div class="relative group">
+                            <div
+                                class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"
+                            >
+                                <Mail
+                                    class="w-4 h-4 text-muted-foreground/50 group-focus-within:text-primary transition-colors"
+                                />
+                            </div>
+                            <Input
+                                id="email"
+                                type="email"
+                                name="email"
+                                autocomplete="off"
+                                autofocus
+                                placeholder="email@exemplo.com"
+                                class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                            />
+                        </div>
+                        <InputError :message="errors.email" />
+                    </div>
 
-                <div class="my-6 flex items-center justify-start">
                     <Button
-                        class="w-full"
+                        class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
                         :disabled="processing"
                         data-test="email-password-reset-link-button"
                         type="submit"
                     >
-                        <Spinner
-                            v-if="processing"
-                            class="h-4 w-4 animate-spin"
-                        />
-                        Enviar link de redefinição de senha
+                        <Spinner v-if="processing" class="h-4 w-4 animate-spin" />
+                        <template v-else>
+                            Enviar link de redefinição
+                            <ArrowRight
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                            />
+                        </template>
                     </Button>
                 </div>
             </Form>
 
-            <div class="space-x-1 text-center text-sm text-muted-foreground">
+            <div class="text-center text-sm text-muted-foreground">
                 <span>Ou, voltar para</span>
-                <TextLink :href="login()">Entrar</TextLink>
+                <TextLink :href="login()" class="ml-1 text-primary font-bold">Entrar</TextLink>
             </div>
         </div>
     </AuthLayout>
