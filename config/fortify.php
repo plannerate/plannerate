@@ -144,7 +144,7 @@ return [
     */
 
     'features' => [
-        // Features::registration(),
+        // Features::registration(), // Desabilitado — uso de 'Solicitar Acesso'
         Features::resetPasswords(),
         Features::emailVerification(),
         Features::twoFactorAuthentication([

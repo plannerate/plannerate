@@ -7,6 +7,13 @@ Route::get('/', function () {
     return redirect('/dashboard');
 })->name('home');
 
+Route::middleware('guest')->group(function () {
+    Route::get('/solicitar-acesso', [\App\Http\Controllers\Auth\RequestAccessController::class, 'index'])
+        ->name('request-access.index');
+    Route::post('/solicitar-acesso', [\App\Http\Controllers\Auth\RequestAccessController::class, 'store'])
+        ->name('request-access.store');
+});
+
 $context = request()->getContext();
 
 Route::middleware(['web', 'auth', $context])

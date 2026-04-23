@@ -9,6 +9,7 @@ import { Spinner } from '@/components/ui/spinner';
 import AuthBase from '@/layouts/AuthLayout.vue';
 import { store } from '@/routes/login/index';
 import { request } from '@/routes/password/index';
+import { index as requestAccess } from '@/actions/App/Http/Controllers/Auth/RequestAccessController';
 import SocialLoginButtons from '~/components/SocialLoginButtons.vue';
 import { Form, Head, usePage } from '@inertiajs/vue3';
 import { ArrowRight, Key, Lock, Mail } from 'lucide-vue-next';
@@ -19,6 +20,7 @@ defineProps<{
     status?: string;
     canResetPassword: boolean;
     canRegister: boolean;
+    canRequestAccess: boolean;
 }>();
 </script>
 
@@ -164,12 +166,15 @@ defineProps<{
         </template>
 
         <!-- Contact admin note -->
-        <div class="mt-10 pt-8 border-t border-border text-center">
+        <div v-if="canRequestAccess" class="mt-10 pt-8 border-t border-border text-center">
             <p class="text-muted-foreground text-sm font-medium">
                 Novo na plataforma?
-                <a href="#" class="text-primary font-bold hover:underline">
-                    Entre em contato com a Administração
-                </a>
+                <TextLink
+                    :href="requestAccess()"
+                    class="text-primary font-bold hover:underline"
+                >
+                    Solicitar Acesso
+                </TextLink>
             </p>
         </div>
     </AuthBase>
