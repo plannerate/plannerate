@@ -49,7 +49,7 @@ const currentYear = new Date().getFullYear();
                     
                     <AppLogoIcon
                         variant="dark"
-                        class="h-16 w-auto max-w-[160px] object-contain object-left"
+                        class="h-24 w-auto max-w-[240px] object-contain object-left"
                     />
                 </div>
             </div>
