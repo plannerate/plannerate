@@ -22,7 +22,7 @@ import { ArrowRight, Lock } from 'lucide-vue-next';
             reset-on-success
             v-slot="{ errors, processing }"
         >
-            <div class="grid gap-6">
+            <div class="grid gap-4">
                 <div class="grid gap-2">
                     <Label
                         for="password"
@@ -46,7 +46,7 @@ import { ArrowRight, Lock } from 'lucide-vue-next';
                             autocomplete="current-password"
                             autofocus
                             placeholder="Sua senha"
-                            class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                            class="pl-11 h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                         />
                     </div>
                     <InputError :message="errors.password" />
@@ -54,7 +54,7 @@ import { ArrowRight, Lock } from 'lucide-vue-next';
 
                 <Button
                     type="submit"
-                    class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                    class="w-full btn-gradient h-10 text-sm font-bold rounded-lg flex items-center justify-center gap-2 group"
                     :disabled="processing"
                 >
                     <Spinner v-if="processing" class="h-4 w-4 animate-spin" />

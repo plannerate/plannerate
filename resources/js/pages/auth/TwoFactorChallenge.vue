@@ -93,7 +93,7 @@ const codeValue = computed<string>(() => code.value.join(''));
 
                     <Button
                         type="submit"
-                        class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                        class="w-full btn-gradient h-10 text-sm font-bold rounded-lg flex items-center justify-center gap-2 group"
                         :disabled="processing"
                     >
                         <template v-if="!processing">
@@ -140,7 +140,7 @@ const codeValue = computed<string>(() => code.value.join(''));
                                 placeholder="Digite o código de recuperação"
                                 :autofocus="showRecoveryInput"
                                 required
-                                class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                                class="pl-11 h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                             />
                         </div>
                         <InputError :message="errors.recovery_code" />
@@ -148,7 +148,7 @@ const codeValue = computed<string>(() => code.value.join(''));
 
                     <Button
                         type="submit"
-                        class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                        class="w-full btn-gradient h-10 text-sm font-bold rounded-lg flex items-center justify-center gap-2 group"
                         :disabled="processing"
                     >
                         <template v-if="!processing">

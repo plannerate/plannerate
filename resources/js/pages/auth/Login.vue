@@ -40,9 +40,9 @@ defineProps<{
             v-bind="store.form()"
             :reset-on-success="['password']"
             v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
+            class="flex flex-col gap-4"
         >
-            <div class="grid gap-6">
+            <div class="grid gap-4">
                 <!-- Email -->
                 <div class="grid gap-2">
                     <Label
@@ -68,7 +68,7 @@ defineProps<{
                             :tabindex="1"
                             autocomplete="email"
                             placeholder="nome@organizacao.com"
-                            class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                            class="pl-11 h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                         />
                     </div>
                     <InputError :message="errors.email" />
@@ -108,7 +108,7 @@ defineProps<{
                             :tabindex="2"
                             autocomplete="current-password"
                             placeholder="••••••••"
-                            class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                            class="pl-11 h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                         />
                     </div>
                     <InputError :message="errors.password" />
@@ -128,7 +128,7 @@ defineProps<{
                 <!-- Submit -->
                 <Button
                     type="submit"
-                    class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                    class="w-full btn-gradient h-10 text-sm font-bold rounded-lg flex items-center justify-center gap-2 group"
                     :tabindex="4"
                     :disabled="processing"
                     data-test="login-button"

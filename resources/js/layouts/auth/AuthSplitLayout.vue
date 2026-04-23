@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppLogoIcon from '@/components/AppLogoIcon.vue';
-import { BarChart3, LayoutDashboard } from 'lucide-vue-next';
+import { BarChart3 } from 'lucide-vue-next';
 
 defineProps<{
     title?: string;
@@ -11,7 +11,7 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-    <div class="relative flex min-h-dvh">
+    <div class="relative flex h-dvh">
         <!-- Left Side: Dark Brand Panel -->
         <section
             class="hidden lg:flex w-9/12 bg-sidebar relative overflow-hidden flex-col p-16 justify-between border-r border-white/5"
@@ -62,7 +62,7 @@ const currentYear = new Date().getFullYear();
                     <BarChart3 class="w-3 h-3 text-sidebar-primary" />
                     <span
                         class="text-sidebar-primary text-xs font-bold tracking-widest uppercase"
-                        >Retail Precision Engine</span
+                        >Motor de Precisao no Varejo</span
                     >
                 </div>
 
@@ -125,9 +125,10 @@ const currentYear = new Date().getFullYear();
 
         <!-- Right Side: Clean Form Area -->
         <section
-            class="flex-1 bg-background flex flex-col justify-center items-center px-8 sm:px-16 lg:px-24 py-16"
+            class="flex-1 bg-background flex flex-col px-8 sm:px-16 lg:px-24 py-16 overflow-y-auto"
         >
-            <div class="w-full max-w-md">
+            <!-- Form content — cresce para empurrar footer ao fundo -->
+            <div class="flex-1 flex flex-col justify-center w-full max-w-md mx-auto">
                 <!-- Mobile Logo (hidden on desktop) -->
                 <div class="lg:hidden flex items-center gap-2 mb-12">
                     <AppLogoIcon
@@ -158,17 +159,15 @@ const currentYear = new Date().getFullYear();
                 <slot />
             </div>
 
-            <!-- Footer -->
-            <footer class="w-full max-w-md mt-16 pt-8 border-t border-border">
-                <div
-                    class="flex flex-col md:flex-row justify-between items-center gap-4"
-                >
+            <!-- Footer — colado ao fundo -->
+            <footer class="w-full max-w-md mx-auto pt-6 border-t border-border">
+                <div class="flex items-center justify-between gap-4">
                     <span
                         class="text-[10px] uppercase tracking-widest text-muted-foreground/60"
                     >
-                        © {{ currentYear }} Plannerate. Precision by Design.
+                        © {{ currentYear }} Plannerate. Precisão por design.
                     </span>
-                    <div class="flex gap-6">
+                    <div class="flex items-center gap-6">
                         <a
                             href="#"
                             class="text-[10px] uppercase tracking-widest text-muted-foreground/60 hover:text-primary transition-colors"

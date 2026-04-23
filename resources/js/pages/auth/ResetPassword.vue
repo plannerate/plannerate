@@ -33,7 +33,7 @@ const inputEmail = ref(props.email);
             :reset-on-success="['password', 'password_confirmation']"
             v-slot="{ errors, processing }"
         >
-            <div class="grid gap-6">
+            <div class="grid gap-4">
                 <!-- Email (readonly) -->
                 <div class="grid gap-2">
                     <Label
@@ -55,7 +55,7 @@ const inputEmail = ref(props.email);
                             autocomplete="email"
                             v-model="inputEmail"
                             readonly
-                            class="pl-11 h-12 bg-muted/30 border-transparent rounded-lg font-medium opacity-70"
+                            class="pl-11 h-10 bg-muted/30 border-transparent rounded-lg font-medium opacity-70"
                         />
                     </div>
                     <InputError :message="errors.email" class="mt-2" />
@@ -84,7 +84,7 @@ const inputEmail = ref(props.email);
                             autocomplete="new-password"
                             autofocus
                             placeholder="Nova senha"
-                            class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                            class="pl-11 h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                         />
                     </div>
                     <InputError :message="errors.password" />
@@ -112,7 +112,7 @@ const inputEmail = ref(props.email);
                             name="password_confirmation"
                             autocomplete="new-password"
                             placeholder="Confirmar senha"
-                            class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                            class="pl-11 h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                         />
                     </div>
                     <InputError :message="errors.password_confirmation" />
@@ -120,7 +120,7 @@ const inputEmail = ref(props.email);
 
                 <Button
                     type="submit"
-                    class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                    class="w-full btn-gradient h-10 text-sm font-bold rounded-lg flex items-center justify-center gap-2 group"
                     :disabled="processing"
                 >
                     <Spinner v-if="processing" class="h-4 w-4 animate-spin" />

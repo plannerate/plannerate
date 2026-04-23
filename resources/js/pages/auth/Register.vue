@@ -22,11 +22,16 @@ import { Form, Head } from '@inertiajs/vue3';
             method="post"
             :reset-on-success="['password', 'password_confirmation']"
             v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
+            class="flex flex-col gap-4"
         >
-            <div class="grid gap-6">
+            <div class="grid gap-4">
                 <div class="grid gap-2">
-                    <Label for="name">Nome</Label>
+                    <Label
+                        for="name"
+                        class="text-xs font-bold uppercase tracking-widest text-muted-foreground"
+                    >
+                        Nome completo
+                    </Label>
                     <Input
                         id="name"
                         type="text"
@@ -35,13 +40,19 @@ import { Form, Head } from '@inertiajs/vue3';
                         :tabindex="1"
                         autocomplete="name"
                         name="name"
-                        placeholder="Nome completo"
+                        placeholder="Seu nome completo"
+                        class="h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                     />
                     <InputError :message="errors.name" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="email">Endereço de e-mail</Label>
+                    <Label
+                        for="email"
+                        class="text-xs font-bold uppercase tracking-widest text-muted-foreground"
+                    >
+                        Endereço de e-mail
+                    </Label>
                     <Input
                         id="email"
                         type="email"
@@ -49,13 +60,19 @@ import { Form, Head } from '@inertiajs/vue3';
                         :tabindex="2"
                         autocomplete="email"
                         name="email"
-                        placeholder="email@example.com"
+                        placeholder="email@exemplo.com"
+                        class="h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                     />
                     <InputError :message="errors.email" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password">Senha</Label>
+                    <Label
+                        for="password"
+                        class="text-xs font-bold uppercase tracking-widest text-muted-foreground"
+                    >
+                        Senha
+                    </Label>
                     <Input
                         id="password"
                         type="password"
@@ -63,13 +80,19 @@ import { Form, Head } from '@inertiajs/vue3';
                         :tabindex="3"
                         autocomplete="new-password"
                         name="password"
-                        placeholder="Senha"
+                        placeholder="••••••••"
+                        class="h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                     />
                     <InputError :message="errors.password" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password_confirmation">Confirmar senha</Label>
+                    <Label
+                        for="password_confirmation"
+                        class="text-xs font-bold uppercase tracking-widest text-muted-foreground"
+                    >
+                        Confirmar senha
+                    </Label>
                     <Input
                         id="password_confirmation"
                         type="password"
@@ -77,19 +100,20 @@ import { Form, Head } from '@inertiajs/vue3';
                         :tabindex="4"
                         autocomplete="new-password"
                         name="password_confirmation"
-                        placeholder="Confirmar senha"
+                        placeholder="••••••••"
+                        class="h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                     />
                     <InputError :message="errors.password_confirmation" />
                 </div>
 
                 <Button
                     type="submit"
-                    class="mt-2 w-full"
-                    tabindex="5"
+                    class="w-full btn-gradient h-10 text-sm font-bold rounded-lg flex items-center justify-center gap-2 group"
+                    :tabindex="5"
                     :disabled="processing"
                 >
                     <Spinner v-if="processing" class="h-4 w-4 animate-spin" />
-                    Criar conta
+                    <template v-else>Criar conta</template>
                 </Button>
             </div>
 
@@ -97,7 +121,7 @@ import { Form, Head } from '@inertiajs/vue3';
                 Já tem uma conta?
                 <TextLink
                     :href="login()"
-                    class="underline underline-offset-4"
+                    class="text-primary font-bold hover:underline"
                     :tabindex="6"
                     >Entrar</TextLink
                 >

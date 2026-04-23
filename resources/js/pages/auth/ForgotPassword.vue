@@ -32,7 +32,7 @@ defineProps<{
 
         <div class="space-y-6">
             <Form v-bind="email.form()" v-slot="{ errors, processing }">
-                <div class="grid gap-6">
+                <div class="grid gap-4">
                     <div class="grid gap-2">
                         <Label
                             for="email"
@@ -55,14 +55,14 @@ defineProps<{
                                 autocomplete="off"
                                 autofocus
                                 placeholder="email@exemplo.com"
-                                class="pl-11 h-12 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
+                                class="pl-11 h-10 bg-muted/30 border-transparent focus-visible:border-primary focus-visible:ring-0 rounded-lg font-medium"
                             />
                         </div>
                         <InputError :message="errors.email" />
                     </div>
 
                     <Button
-                        class="w-full btn-gradient h-12 text-base font-bold rounded-lg flex items-center justify-center gap-2 group"
+                        class="w-full btn-gradient h-10 text-sm font-bold rounded-lg flex items-center justify-center gap-2 group"
                         :disabled="processing"
                         data-test="email-password-reset-link-button"
                         type="submit"
