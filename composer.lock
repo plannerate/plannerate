@@ -355,12 +355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/callcocam/laravel-raptor.git",
-                "reference": "ce50c970e432d9764a06fce6e2803d025bae1af3"
+                "reference": "f3e33c28da40fc693867b48069f201878f1b7e46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/callcocam/laravel-raptor/zipball/ce50c970e432d9764a06fce6e2803d025bae1af3",
-                "reference": "ce50c970e432d9764a06fce6e2803d025bae1af3",
+                "url": "https://api.github.com/repos/callcocam/laravel-raptor/zipball/f3e33c28da40fc693867b48069f201878f1b7e46",
+                "reference": "f3e33c28da40fc693867b48069f201878f1b7e46",
                 "shasum": ""
             },
             "require": {
@@ -464,7 +464,7 @@
                     "url": "https://github.com/Claudio Campos"
                 }
             ],
-            "time": "2026-04-22T14:02:21+00:00"
+            "time": "2026-04-23T19:03:44+00:00"
         },
         {
             "name": "callcocam/laravel-raptor-flow",
