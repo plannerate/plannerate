@@ -13,8 +13,9 @@ import { index as requestAccess } from '@/actions/App/Http/Controllers/Auth/Requ
 import SocialLoginButtons from '~/components/SocialLoginButtons.vue';
 import { Form, Head, usePage } from '@inertiajs/vue3';
 import { ArrowRight, Key, Lock, Mail } from 'lucide-vue-next';
+import type { AppPageProps } from '@/types';
 
-const page = usePage<{ socialProviders?: { provider: string; label: string; url: string; icon: string }[] }>();
+const page = usePage<AppPageProps<{ socialProviders?: { provider: string; label: string; url: string; icon: string }[] }>>();
 
 defineProps<{
     status?: string;
