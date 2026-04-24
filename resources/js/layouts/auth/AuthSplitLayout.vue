@@ -14,7 +14,7 @@ const currentYear = new Date().getFullYear();
     <div class="relative flex h-dvh">
         <!-- Left Side: Dark Brand Panel -->
         <section
-            class="hidden lg:flex w-9/12 bg-sidebar relative overflow-hidden flex-col p-16 justify-between border-r border-white/5"
+            class="hidden lg:flex w-8/12 bg-sidebar relative overflow-hidden flex-col p-16 justify-between border-r border-white/5"
         >
             <!-- Store Image Background -->
             <div
@@ -24,7 +24,7 @@ const currentYear = new Date().getFullYear();
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
-                    filter: blur(8px);
+                    filter: blur(1px);
                 "
             />
 
