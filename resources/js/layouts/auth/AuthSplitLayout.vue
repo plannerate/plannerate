@@ -43,19 +43,16 @@ const currentYear = new Date().getFullYear();
                 />
             </div>
 
-            <!-- Logo -->
-            <div class="relative z-10">
+            <!-- Logo + Main Content -->
+            <div class="relative z-10 max-w-2xl flex flex-col gap-8">
                 <div class="flex items-center gap-3">
-                    
                     <AppLogoIcon
                         variant="dark"
-                        class="h-32 w-auto   object-contain object-left"
+                        class="h-28 w-auto object-contain object-left"
                     />
                 </div>
-            </div>
 
-            <!-- Main Content -->
-            <div class="relative z-10 max-w-2xl">
+            <div>
                 <div
                     class="mb-6 inline-flex items-center gap-2 bg-sidebar-primary/10 px-4 py-2 rounded-full border border-sidebar-primary/20"
                 >
@@ -67,7 +64,7 @@ const currentYear = new Date().getFullYear();
                 </div>
 
                 <h1
-                    class="font-bold text-5xl xl:text-6xl leading-tight text-white mb-8"
+                    class="font-bold text-4xl xl:text-5xl leading-tight text-white mb-6"
                 >
                     Organize. Integre. Controle.
                     <span
@@ -81,20 +78,21 @@ const currentYear = new Date().getFullYear();
                 </h1>
 
                 <p
-                    class="text-sidebar-foreground/60 text-lg max-w-lg font-light leading-relaxed"
+                    class="text-sidebar-foreground/60 text-base max-w-lg font-light leading-relaxed"
                 >
                     Eleve seu espaço de varejo com planogramas de precisão.
                     Transforme dados em excelência estratégica e impulsione a
                     conversão com layouts otimizados.
                 </p>
             </div>
+            </div>
 
             <!-- Stats -->
             <div
-                class="relative z-10 flex gap-12 border-t border-white/10 pt-12"
+                class="relative z-10 flex gap-10 border-t border-white/10 pt-8"
             >
                 <div class="flex flex-col gap-1">
-                    <span class="text-sidebar-primary font-bold text-3xl"
+                    <span class="text-sidebar-primary font-bold text-2xl"
                         >99.8%</span
                     >
                     <span
@@ -103,7 +101,7 @@ const currentYear = new Date().getFullYear();
                     >
                 </div>
                 <div class="flex flex-col gap-1">
-                    <span class="text-sidebar-primary font-bold text-3xl"
+                    <span class="text-sidebar-primary font-bold text-2xl"
                         >24/7</span
                     >
                     <span
@@ -112,7 +110,7 @@ const currentYear = new Date().getFullYear();
                     >
                 </div>
                 <div class="flex flex-col gap-1">
-                    <span class="text-sidebar-primary font-bold text-3xl"
+                    <span class="text-sidebar-primary font-bold text-2xl"
                         >15k+</span
                     >
                     <span
@@ -142,7 +140,7 @@ const currentYear = new Date().getFullYear();
                     <slot name="header">
                         <h2
                             v-if="title"
-                            class="text-3xl font-bold text-foreground mb-3 tracking-tight"
+                            class="text-2xl font-bold text-foreground mb-2 tracking-tight"
                         >
                             {{ title }}
                         </h2>
