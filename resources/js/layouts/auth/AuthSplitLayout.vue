@@ -44,7 +44,7 @@ const currentYear = new Date().getFullYear();
             </div>
 
             <!-- Logo + Main Content -->
-            <div class="relative z-10 max-w-2xl flex flex-col gap-8">
+            <div class="relative z-10 max-w-2xl flex flex-col  mt-16">
                 <div class="flex items-center gap-3">
                     <AppLogoIcon
                         variant="dark"
@@ -54,12 +54,12 @@ const currentYear = new Date().getFullYear();
 
             <div>
                 <div
-                    class="mb-6 inline-flex items-center gap-2 bg-sidebar-primary/10 px-4 py-2 rounded-full border border-sidebar-primary/20"
+                    class="mb-2 mt-10 inline-flex items-center gap-2 bg-sidebar-primary/10 px-4 py-2 rounded-full border border-sidebar-primary/20"
                 >
                     <BarChart3 class="w-3 h-3 text-sidebar-primary" />
                     <span
                         class="text-sidebar-primary text-xs font-bold tracking-widest uppercase"
-                        >Motor de Precisao no Varejo</span
+                        >PLANOGRAMAS GERADOS COM PRECISÃO</span
                     >
                 </div>
 
@@ -78,11 +78,10 @@ const currentYear = new Date().getFullYear();
                 </h1>
 
                 <p
-                    class="text-sidebar-foreground/60 text-base max-w-lg font-light leading-relaxed"
+                    class="text-sidebar-foreground text-base max-w-lg font-light leading-relaxed"
                 >
-                    Eleve seu espaço de varejo com planogramas de precisão.
-                    Transforme dados em excelência estratégica e impulsione a
-                    conversão com layouts otimizados.
+                Transforme dados em planogramas inteligentes.<br>
+                Crie layouts otimizados, melhore a exposição dos produtos e impulsione os resultados do seu ponto de venda.
                 </p>
             </div>
             </div>
@@ -93,11 +92,20 @@ const currentYear = new Date().getFullYear();
             >
                 <div class="flex flex-col gap-1">
                     <span class="text-sidebar-primary font-bold text-2xl"
-                        >99.8%</span
+                        >ERP</span
                     >
                     <span
                         class="text-sidebar-foreground/40 text-xs uppercase tracking-widest"
-                        >Precisão de Inventário</span
+                        >Integração de dados</span
+                    >
+                </div>
+                <div class="flex flex-col gap-1">
+                    <span class="text-sidebar-primary font-bold text-2xl"
+                        >360°</span
+                    >
+                    <span
+                        class="text-sidebar-foreground/40 text-xs uppercase tracking-widest"
+                        >Fluxo entre áreas</span
                     >
                 </div>
                 <div class="flex flex-col gap-1">
@@ -106,16 +114,7 @@ const currentYear = new Date().getFullYear();
                     >
                     <span
                         class="text-sidebar-foreground/40 text-xs uppercase tracking-widest"
-                        >Sincronização na Nuvem</span
-                    >
-                </div>
-                <div class="flex flex-col gap-1">
-                    <span class="text-sidebar-primary font-bold text-2xl"
-                        >15k+</span
-                    >
-                    <span
-                        class="text-sidebar-foreground/40 text-xs uppercase tracking-widest"
-                        >Implantações Globais</span
+                        >Plataforma web</span
                     >
                 </div>
             </div>
