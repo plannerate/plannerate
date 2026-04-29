@@ -578,12 +578,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:callcocam/laravel-raptor-plannerate.git",
-                "reference": "5a306b9e579d68b43d85b6dcaceeb1c83395a110"
+                "reference": "108838863cd025c0a991e6e64f04f3440481ac0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/callcocam/laravel-raptor-plannerate/zipball/5a306b9e579d68b43d85b6dcaceeb1c83395a110",
-                "reference": "5a306b9e579d68b43d85b6dcaceeb1c83395a110",
+                "url": "https://api.github.com/repos/callcocam/laravel-raptor-plannerate/zipball/108838863cd025c0a991e6e64f04f3440481ac0b",
+                "reference": "108838863cd025c0a991e6e64f04f3440481ac0b",
                 "shasum": ""
             },
             "require": {
@@ -614,7 +614,7 @@
                 "source": "https://github.com/callcocam/laravel-raptor-plannerate/tree/main",
                 "issues": "https://github.com/callcocam/laravel-raptor-plannerate/issues"
             },
-            "time": "2026-04-29T18:43:16+00:00"
+            "time": "2026-04-29T18:56:58+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
